@@ -23,7 +23,7 @@ void menu()
 
     do
     {
-        if (erroSinal == 1) Console.WriteLine("\nERRO: Favor informar o sinal corretamente:");
+        if (sinal < 1 || sinal > 5) Console.WriteLine("\nERRO: Favor informar o sinal corretamente:");
 
         Console.WriteLine("Qual operação deseja realizar?");
         Console.WriteLine("1 - SOMAR;");
@@ -32,8 +32,8 @@ void menu()
         Console.WriteLine("4 - DIVIDIR;");
         Console.WriteLine("5 - RESTO;");
         sinal = int.Parse(Console.ReadLine());
+        
     } while (sinal < 1 || sinal > 5);
-    erroSinal = 0;
 }
 
 
@@ -62,11 +62,11 @@ void popularMatrizes(int[,] matriz, int min, int max)
     Console.WriteLine();
 }
 
-void calcularMatriz(string mensagem, int sinal, int[,] primeiraMatriz, int[,] segundaMatriz)
+void calcularMatriz(int sinal, int[,] primeiraMatriz, int[,] segundaMatriz)
 {
     if (calculoPronto == 1) return;
 
-    Console.WriteLine(mensagem);
+    Console.WriteLine("\n\nRESULTADO: ");
     for (int l = 0; l < qtd_linha; l++)
     {
         if (l > 0) Console.WriteLine();
@@ -120,15 +120,7 @@ do
     popularMatrizes(matriz2, menorNumero, maiorNumero);
 
     //REALIZAR O CALCULO
-    calcularMatriz("\n\nRESULTADO SOMA: ", sinal, matriz1, matriz2);
-
-    calcularMatriz("\n\nRESULTADO SUBTRAÇÃO: ", sinal, matriz1, matriz2);
-
-    calcularMatriz("\n\nRESULTADO MULTIPLICAÇÃO: ", sinal, matriz1, matriz2);
-
-    calcularMatriz("\n\nRESULTADO DIVISÃO: ", sinal, matriz1, matriz2);
-
-    calcularMatriz("\n\nRESULTADO RESTOS DA DIVISÃO: ", sinal, matriz1, matriz2);
+    calcularMatriz(sinal, matriz1, matriz2);
 
     Console.WriteLine("\n\nReiniciar programa?");
     Console.WriteLine("1 - SIM");
